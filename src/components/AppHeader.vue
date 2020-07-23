@@ -22,7 +22,7 @@
 							aria-haspopup="true"
 							aria-expanded="false"
 						>
-							0 Cart
+							{{ cartItemCount }} Cart
 						</button>
 						<!-- 
               하위 링크 클릭 시 이벤트가 상위로 전파되는 것을 방지 
@@ -43,6 +43,11 @@ import MiniCart from './MiniCart';
 export default {
 	components: {
 		MiniCart,
+	},
+	computed: {
+		cartItemCount() {
+			return this.$store.getters.cartItemCount;
+		},
 	},
 };
 </script>
