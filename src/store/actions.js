@@ -54,16 +54,23 @@ export const addProductToCart = ({ commit }, { product, quantity }) => {
  */
 export const getCartProducts = ({ commit }) => {
 	axios.get('http://127.0.0.1:8090/api/shop/cart').then(response => {
-		console.log('getCartProducts=====>', response.data);
 		const data = response.data;
 		const cart = [];
 
 		data.forEach(item => {
-			console.log('item===>', item);
-			const product = new Product(item.title, item.description, item.image, item.price);
-			cart.push({ product: product, quantity: item.quantity });
+			const product = new Product(item.id, item.title, item.description, item.image, item.price);
+			cart.push({ product, quantity: item.quantity });
 		});
-
+		console.log('getCartProducts===>', cart);
 		commit('SET_CART', cart);
 	});
+};
+
+/**
+ * 장바구니에서 상품 제거
+ * @param commit
+ * @param product
+ */
+export const removeProductFromCart = ({ commit }, product) => {
+	commit('REMOVE_PRODUCT_FROM_CART', product);
 };

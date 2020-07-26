@@ -26,3 +26,9 @@ export const ADD_TO_CART = (state, { product, quantity }) => {
 export const SET_CART = (state, cart) => {
 	state.cart = cart;
 };
+
+export const REMOVE_PRODUCT_FROM_CART = (state, product) => {
+	state.cart = state.cart.filter(item => {
+		return item.product.id !== product.id;
+	});
+};

@@ -9,10 +9,16 @@
 				<div class="px-2 d-flex justify-content-between">
 					<div>
 						<strong>{{ item.product.title }}</strong>
-						<br />{{ item.quantity }} x ${{ item.product.price }}
+						<br />
+						{{ item.quantity }} x ${{ item.product.price }}
 					</div>
 					<div>
-						<a href="#" class="badge badge-secondary">remove</a>
+						<a
+							href="#"
+							class="badge badge-secondary"
+							@click.prevent="removeProductFromCart(item.product)"
+							>remove</a
+						>
 					</div>
 				</div>
 				<hr />
@@ -50,6 +56,12 @@ export default {
 	// mounted() ==> 화면 (재)로딩 시 장바구니 정보 처리
 	mounted() {
 		this.$store.dispatch('getCartProducts');
+	},
+	methods: {
+		removeProductFromCart(product) {
+			console.log('remove product=====>', product);
+			this.$store.dispatch('removeProductFromCart', product);
+		},
 	},
 };
 </script>
