@@ -16,7 +16,7 @@
 						<a
 							href="#"
 							class="badge badge-secondary"
-							@click.prevent="removeProductFromCart(item.product)"
+							@click.prevent="removeItemFromCart(item.product)"
 							>remove</a
 						>
 					</div>
@@ -38,7 +38,7 @@
 		</div>
 		<div class="d-flex justify-content-between">
 			<span>Total: ${{ cartTotalPrice || 0 }}</span>
-			<a href="#">Clear Cart</a>
+			<a href="#" @click.prevent="clearCartItems">Clear Cart</a>
 		</div>
 	</div>
 </template>
@@ -55,12 +55,14 @@ export default {
 	},
 	// mounted() ==> 화면 (재)로딩 시 장바구니 정보 처리
 	mounted() {
-		this.$store.dispatch('getCartProducts');
+		this.$store.dispatch('getCartItems');
 	},
 	methods: {
-		removeProductFromCart(product) {
-			console.log('remove product=====>', product);
-			this.$store.dispatch('removeProductFromCart', product);
+		removeItemFromCart(product) {
+			this.$store.dispatch('removeItemFromCart', product);
+		},
+		clearCartItems() {
+			this.$store.dispatch('clearCartItems');
 		},
 	},
 };

@@ -27,8 +27,12 @@ export const SET_CART = (state, cart) => {
 	state.cart = cart;
 };
 
-export const REMOVE_PRODUCT_FROM_CART = (state, product) => {
+export const REMOVE_ITEM_FROM_CART = (state, product) => {
 	state.cart = state.cart.filter(item => {
 		return item.product.id !== product.id;
 	});
+};
+
+export const CLEAR_CART_ITEMS = state => {
+	state.cart = [];
 };

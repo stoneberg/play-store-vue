@@ -52,7 +52,7 @@ export const addProductToCart = ({ commit }, { product, quantity }) => {
  * 장바구니 조회
  * @param commit
  */
-export const getCartProducts = ({ commit }) => {
+export const getCartItems = ({ commit }) => {
 	axios.get('http://127.0.0.1:8090/api/shop/cart').then(response => {
 		const data = response.data;
 		const cart = [];
@@ -71,6 +71,12 @@ export const getCartProducts = ({ commit }) => {
  * @param commit
  * @param product
  */
-export const removeProductFromCart = ({ commit }, product) => {
-	commit('REMOVE_PRODUCT_FROM_CART', product);
+export const removeItemFromCart = ({ commit }, product) => {
+	axios.delete(`http://127.0.0.1:8090/api/shop/cart/${product.id}`);
+	commit('REMOVE_ITEM_FROM_CART', product);
+};
+
+export const clearCartItems = ({ commit }) => {
+	axios.delete('http://127.0.0.1:8090/api/shop/cart');
+	commit('CLEAR_CART_ITEMS');
 };
