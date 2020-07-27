@@ -44,26 +44,31 @@
 </template>
 
 <script>
+import { mapState, mapGetters, mapActions } from 'vuex';
 export default {
 	computed: {
-		cart() {
-			return this.$store.state.cart;
-		},
-		cartTotalPrice() {
-			return this.$store.getters.cartTotalPrice;
-		},
+		...mapState(['cart']),
+		...mapGetters(['cartTotalPrice']),
+		// cart() {
+		// 	return this.$store.state.cart;
+		// },
+		// cartTotalPrice() {
+		// 	return this.$store.getters.cartTotalPrice;
+		// },
 	},
-	// mounted() ==> 화면 (재)로딩 시 장바구니 정보 처리
+	// mounted() ==> 화면 (재)로딩 시 장바구니 정보 호출
 	mounted() {
-		this.$store.dispatch('getCartItems');
+		this.getCartItems();
+		// this.$store.dispatch('getCartItems');
 	},
 	methods: {
-		removeItemFromCart(product) {
-			this.$store.dispatch('removeItemFromCart', product);
-		},
-		clearCartItems() {
-			this.$store.dispatch('clearCartItems');
-		},
+		...mapActions(['removeItemFromCart', 'clearCartItems', 'getCartItems']),
+		// removeItemFromCart(product) {
+		// 	this.$store.dispatch('removeItemFromCart', product);
+		// },
+		// clearCartItems() {
+		// 	this.$store.dispatch('clearCartItems');
+		// },
 	},
 };
 </script>
