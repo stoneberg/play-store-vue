@@ -15,13 +15,17 @@
 					<div>
 						<a
 							href="#"
-							class="badge badge-secondary"
+							class="badge badge-warning"
 							@click.prevent="removeItemFromCart(item.product)"
 							>remove</a
 						>
 					</div>
 				</div>
 				<hr />
+			</div>
+			<div class="d-flex justify-content-between">
+				<span>Total: ${{ cartTotalPrice || 0 }}</span>
+				<a href="#" class="badge badge-danger" @click.prevent="clearCartItems">Clear Cart</a>
 			</div>
 		</div>
 		<div v-else>
@@ -35,10 +39,10 @@
 				</div>
 			</div>
 			<hr />
-		</div>
-		<div class="d-flex justify-content-between">
-			<span>Total: ${{ cartTotalPrice || 0 }}</span>
-			<a href="#" @click.prevent="clearCartItems">Clear Cart</a>
+			<div class="d-flex justify-content-between">
+				<span>Total: ${{ cartTotalPrice || 0 }}</span>
+				<a href="#" class="badge badge-secondary disabled">Clear Cart</a>
+			</div>
 		</div>
 	</div>
 </template>
