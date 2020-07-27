@@ -46,7 +46,7 @@ export default {
 		MiniCart,
 	},
 	computed: {
-		...mapGetters(['cartItemCount']),
+		...mapGetters('cart', ['cartItemCount']),
 		// cartItemCount() {
 		// 	return this.$store.getters.cartItemCount;
 		// },

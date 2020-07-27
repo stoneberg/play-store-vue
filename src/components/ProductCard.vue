@@ -23,7 +23,7 @@ import { mapActions } from 'vuex';
 export default {
 	props: ['product'],
 	methods: {
-		...mapActions(['addProductToCart']),
+		...mapActions('cart', ['addProductToCart']),
 		// 주의! action과 호출 함수의 이름이 같은면 오류남!
 		// methods에서 action을 호출할 때는 함수로 한번 더 감싸야 함
 		// mounted나 created에서 action을 호출할 때는 action명으로 바로 호출 가능

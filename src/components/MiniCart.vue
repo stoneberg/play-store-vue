@@ -47,8 +47,13 @@
 import { mapState, mapGetters, mapActions } from 'vuex';
 export default {
 	computed: {
-		...mapState(['cart']),
-		...mapGetters(['cartTotalPrice']),
+		...mapState('cart', ['cart']),
+		...mapGetters('cart', ['cartTotalPrice']),
+		// ...mapState({
+		// 	cart: state => state.cart.cart,
+		// }),
+		//...mapState(['cart']),
+		//...mapGetters(['cart/cartTotalPrice']),
 		// cart() {
 		// 	return this.$store.state.cart;
 		// },
@@ -62,7 +67,7 @@ export default {
 		// this.$store.dispatch('getCartItems');
 	},
 	methods: {
-		...mapActions(['removeItemFromCart', 'clearCartItems', 'getCartItems']),
+		...mapActions('cart', ['removeItemFromCart', 'clearCartItems', 'getCartItems']),
 		// removeItemFromCart(product) {
 		// 	this.$store.dispatch('removeItemFromCart', product);
 		// },

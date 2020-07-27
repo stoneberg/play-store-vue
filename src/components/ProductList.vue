@@ -13,7 +13,11 @@ export default {
 		ProductCard,
 	},
 	computed: {
-		...mapState(['products']),
+		...mapState('product', ['products']),
+		// ...mapState({
+		// 	products: state => state.product.products,
+		// }),
+		//...mapState(['products']),
 		// products() {
 		// 	return this.$store.state.products;
 		// },
@@ -23,7 +27,7 @@ export default {
 		this.getProducts();
 	},
 	methods: {
-		...mapActions(['getProducts']),
+		...mapActions('product', ['getProducts']),
 	},
 };
 </script>

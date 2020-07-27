@@ -31,13 +31,19 @@ export default {
 	},
 	// 조횓된 결과를 스토어에서 받아서 화면에 표시
 	computed: {
-		...mapState(['product']),
+		...mapState('product', ['product']),
+		// ...mapState({
+		// 	product: state => state.product.product,
+		// }),
+		//...mapState(['product']),
 		// product() {
 		// 	return this.$store.state.product;
 		// },
 	},
 	methods: {
-		...mapActions(['getProduct', 'addProductToCart']),
+		...mapActions('product', ['getProduct']),
+		...mapActions('cart', ['addProductToCart']),
+		//...mapActions(['getProduct', 'addProductToCart']),
 		addToCart() {
 			this.addProductToCart({
 				product: this.product,
