@@ -8,9 +8,9 @@
 					<li class="nav-item active">
 						<router-link to="/" class="nav-link">Home</router-link>
 					</li>
-					<li class="nav-item">
+					<!-- <li class="nav-item">
 						<a class="nav-link" href="#">Product</a>
-					</li>
+					</li> -->
 				</ul>
 				<div class="form-inline my-2 my-lg-0">
 					<div class="dropdown open">
