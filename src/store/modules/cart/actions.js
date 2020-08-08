@@ -8,7 +8,7 @@ import Cart from '@/apis/shop/cart';
  */
 export const addProductToCart = ({ commit, dispatch }, { product, quantity }) => {
 	// 화면 리로드를 대비해서 서버에 장바구니 물품 정보 저장
-	Cart.store({
+	Cart.save({
 		productId: product.id,
 		quantity: quantity,
 	}).then(() => {

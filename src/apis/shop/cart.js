@@ -6,7 +6,7 @@ export default {
 	all() {
 		return SHOP_API.get(END_POINT);
 	},
-	store(payload) {
+	save(payload) {
 		return SHOP_API.post(END_POINT, payload);
 	},
 	delete(id) {
